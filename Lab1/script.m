@@ -1,7 +1,7 @@
 clear;
 close all;
 
-m = 50;
+m = 100;
 
 [u1, A] = poisson(@f1, @g1, m);
 [u2, ~] = poisson(@f1, @g2, m);
@@ -9,19 +9,23 @@ m = 50;
 [u4, ~] = poisson(@f2, @g2, m);
 
 subplot(2, 4, 1)
-surf(u1)
+s = surf(u1)
+s.EdgeColor = 'none';
 title("f1, g1")
 
 subplot(2, 4, 2)
-surf(u2)
+s = surf(u2)
+s.EdgeColor = 'none';
 title("f1, g2")
 
 subplot(2, 4, 5)
-surf(u3)
+s = surf(u3)
+s.EdgeColor = 'none';
 title("f2, g1")
 
 subplot(2, 4, 6)
-surf(u4)
+s = surf(u4)
+s.EdgeColor = 'none';
 title("f2, g2")
 
 subplot(2, 4, [3, 4, 7, 8])
