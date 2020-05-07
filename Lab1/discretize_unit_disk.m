@@ -34,7 +34,7 @@ for i = 1 : M
             if dist > 0 || abs(dist) < TOL
                 on_border = on_border + 1;
 
-                h_E = min(abs(roots([1, 2*x_h, x_h^2+y_h^2-1])));
+                h_E = min(abs(roots([1, 2*x_h, x_h^2+y_h^2-1]))); % x^2 + 2*x_h*x + x_h^2+y_h^2-1 = 0
                 border(on_border, 1) = x_h + h_E;
                 border(on_border, 2) = y_h;
                 neighbours(in_domain, 1) = -on_border;
@@ -94,6 +94,7 @@ for i = 1 : M
         row2length(i) = row_length;
     end
 end
+
 neighbours = set_neighbours(domain, idx2row, row2length, neighbours);
 
 

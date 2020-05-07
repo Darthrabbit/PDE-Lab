@@ -1,9 +1,9 @@
-function [A, b] = linear_system(border, domain, neighbours, stepsizes, rhs, border_func)
+function [A, b] = linear_system(border, domain, neighbours, stepsizes, h, fname, gname)
 
 n = length(domain);
 
 A = sparse(n);
-b = feval(rhs, domain(:,1), domain(:, 2));
+b = h^2 * feval(fname, domain(:,1), domain(:, 2));
 
 for row = 1 : n
     alpha = get_alphas( stepsizes(row,1), stepsizes(row,2), ...
@@ -17,7 +17,7 @@ for row = 1 : n
             A(row, idx) = alpha(i+1);
         else
             idx = -idx;
-            b(row) = b(row) - alpha(i+1) * border_func(border(idx, 1), border(idx, 2));
+            b(row) = b(row) - alpha(i+1) * gname(border(idx, 1), border(idx, 2));
         end
     end
 end
