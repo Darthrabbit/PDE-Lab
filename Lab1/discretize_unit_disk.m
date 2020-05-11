@@ -1,5 +1,21 @@
+% Sarah Jurke 1521352
+% Lucas Kersken 1457073
+% Moritz Proell 1652588
+
 function [border, domain, idx2row, row2length, neighbours, stepsizes] = discretize_unit_disk(M)
-        
+% Returns a discretization of the unit disk, given a number of discrete points M
+% (Inspired by sparse matrix indexing)
+%
+% broder    - contains positions of points on the border
+% domain    - contains positions of points in the domain
+% idx2row   - maps the index of a point to its row in the domain
+% row2lenght- maps a row to its length
+% neighbours- neighbours(i) contains [E S W N] indices for domain(i).
+%             index > 0 inside domain
+%             index < 0 on border
+%             index = 0 not yet set
+% stepsizes- stepsizes(i) contains [h_E, h_S, h_W, h_N] for domain(i)
+
 h = 2 / (M + 1);
 dist_from_border = @(x,y) x*x + y*y - 1;
 
@@ -34,7 +50,7 @@ for i = 1 : M
             if dist > 0 || abs(dist) < TOL
                 on_border = on_border + 1;
 
-                h_E = min(abs(roots([1, 2*x_h, x_h^2+y_h^2-1]))); % x^2 + 2*x_h*x + x_h^2+y_h^2-1 = 0
+                h_E = min(abs(roots([1, 2*x_h, x_h^2+y_h^2-1])));
                 border(on_border, 1) = x_h + h_E;
                 border(on_border, 2) = y_h;
                 neighbours(in_domain, 1) = -on_border;

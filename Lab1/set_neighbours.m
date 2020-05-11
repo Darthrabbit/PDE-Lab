@@ -1,4 +1,10 @@
+% Sarah Jurke 1521352
+% Lucas Kersken 1457073
+% Moritz Proell 1652588
+
 function [neighbours] = set_neighbours(domain, idx2row, row2length, neighbours)
+% Set the neighbours according to the five star stencil
+% (Inspired by sparse matrix indexing)
 
 number_of_rows  = length(row2length);
 

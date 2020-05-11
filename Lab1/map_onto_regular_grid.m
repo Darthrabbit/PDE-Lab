@@ -1,4 +1,9 @@
-function [u] = map_onto_unit_disc(w, m, row2length)
+% Sarah Jurke 1521352
+% Lucas Kersken 1457073
+% Moritz Proell 1652588
+
+function [u] = map_onto_regular_grid(w, m, row2length)
+% Map the calculated vector w onto a m x m grid for plotting
 
 u = NaN(m);
 elements_put_in = 0;

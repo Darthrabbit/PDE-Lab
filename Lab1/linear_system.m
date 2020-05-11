@@ -1,4 +1,11 @@
+% Sarah Jurke 1521352
+% Lucas Kersken 1457073
+% Moritz Proell 1652588
+
 function [A, b] = linear_system(border, domain, neighbours, stepsizes, h, fname, gname)
+% Creates the linear system that has to be solved for a general domain.
+% (Numerical Analysis and Simulation of Partial Differential Equations, 
+%  Roland Pulch & Jan ter Maten, page 34, algorithm 2.1 line 4-6)
 
 n = length(domain);
 
@@ -13,9 +20,9 @@ for row = 1 : n
     
     for i = 1 : 4
         idx = neighbours(row, i);
-        if  idx > 0
+        if  idx > 0 % in domain
             A(row, idx) = alpha(i+1);
-        else
+        else % on border, shift to rhs
             idx = -idx;
             b(row) = b(row) - alpha(i+1) * gname(border(idx, 1), border(idx, 2));
         end

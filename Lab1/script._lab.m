@@ -1,3 +1,7 @@
+% Sarah Jurke 1521352
+% Lucas Kersken 1457073
+% Moritz Proell 1652588
+
 clear;
 close all;
 
