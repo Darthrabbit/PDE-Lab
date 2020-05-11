@@ -5,7 +5,7 @@
 clear;
 close all;
 
-m = 50;
+m = 10;
 
 [u, A] = poisson(@f2, @g3, m);
 surf(u)
